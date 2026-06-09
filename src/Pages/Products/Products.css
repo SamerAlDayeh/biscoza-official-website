@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css2?family=Changa:wght@200;300;400;500;600;700;800&display=swap");
+
+:root {
+  --color-red: #dd2727;
+  --color-gold: #d7a461;
+  --color-dark: #1f2937;
+  --color-gray: #6b7280;
+  --color-white: #ffffff;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 180deg;
+  inherits: false;
+}
+
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 180deg;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Changa", sans-serif;
+  direction: rtl;
+  background-color: var(--color-white);
+}
+
+.layout_container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.Header_wrapper {
+  text-align: center;
+  margin: 3rem 0;
+}
+.Header_subtitle {
+  color: var(--color-red);
+  font-weight: 700;
+  display: block;
+}
+.Header_title {
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+.Catalog_filterWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+/* أضف هذا التعديل البسيط لقسم الفلاتر */
+.Catalog_filterBtn:hover:not(.Catalog_filterBtnActive) {
+  background-color: var(--color-red-light); /* لون أحمر فاتح جداً خلف الزر */
+  border-color: var(--color-red);
+  color: var(--color-red);
+  transform: translateY(-2px); /* رفعة بسيطة للزر */
+}
+
+.Catalog_filterBtn {
+  padding: 0.7rem 1.8rem;
+  border-radius: 50px;
+  border: 2px solid #eee;
+  background: white;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: inherit;
+  font-weight: 600;
+}
+
+.Catalog_filterBtnActive {
+  background: var(--color-red);
+  color: white;
+  border-color: var(--color-red);
+}
+
+/* --- GRID 3 COLUMNS --- */
+.Catalog_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  justify-content: center;
+  margin: 0 auto 5rem;
+}
+
+/* --- CARD & INITIAL ANIMATION STATE --- */
+.Catalog_card {
+  padding: 3px;
+  position: relative;
+  border-radius: 10px;
+  background: rgb(225, 225, 235);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.549);
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.6s ease,
+    opacity 0.6s ease;
+  z-index: 1;
+
+  /* إعدادات الأنيميشن الذي أعجبك (مخفي في البداية) */
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* الحالة عند ظهور الكرت في الشاشة */
+.Catalog_card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.Catalog_card:hover {
+  cursor: pointer;
+}
+
+.Catalog_card:hover::before,
+.Catalog_card:hover::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(
+    from var(--angle),
+    transparent,
+    hsl(0, 85%, 43%),
+    hsl(0, 76%, 47%)
+  );
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  padding: 3px;
+  border-radius: 10px;
+  animation: 2s spin cubic-bezier(0.275, 0.72, 0.265, 1);
+  background-color: #fff;
+}
+
+.Catalog_imgContainer {
+  height: 280px;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+}
+
+.Catalog_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 1.5s ease;
+}
+
+.Catalog_card:hover .Catalog_img {
+  transform: scale(1.08);
+}
+
+.Catalog_info {
+  padding: 1rem;
+  background-color: #e4dbc7;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 0 0 10px 10px;
+}
+
+.Catalog_name {
+  color: #8b5a2b;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.Catalog_desc {
+  font-size: 14px;
+  color: #444;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .Catalog_grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 700px) {
+  .Catalog_grid {
+    grid-template-columns: 1fr;
+    max-width: 350px;
+  }
+  .Header_title {
+    font-size: 2rem;
+  }
+}

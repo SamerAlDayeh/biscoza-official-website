@@ -1,0 +1,162 @@
+/* التنسيق العام للهيكل */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eeeeee;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  direction: rtl;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* تقسيم الأجزاء بالتساوي */
+.navbar-controls,
+.navbar-center,
+.navbar-logo {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-controls {
+  justify-content: flex-start;
+  gap: 10px;
+}
+.navbar-center {
+  justify-content: center;
+}
+.navbar-logo {
+  justify-content: flex-end;
+}
+
+/* اللوجو */
+.navImage {
+  height: auto;
+  width: 130px;
+  display: block;
+}
+
+/* الروابط - الحل هنا */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 5.2rem; /* تقليل المسافة قليلاً لتناسب السطر */
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #4b5563;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: 0.3s;
+  padding: 0.5rem 0.2rem;
+  white-space: nowrap; /* هذا السطر يمنع الكلمات من النزول لسطر جديد */
+  display: inline-block;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #da251c;
+}
+
+/* زر اللغة */
+.lang-switch-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border: 1px solid #da251c;
+  color: #da251c;
+  padding: 6px 14px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  white-space: nowrap; /* يمنع انكسار كلمة English أو العربية */
+}
+
+.lang-switch-btn:hover {
+  background: #da251c;
+  color: white;
+}
+
+/* إعدادات الموبايل والتابلت */
+.mobile-only {
+  display: none;
+}
+.mobile-only-text {
+  display: none;
+}
+.desktop-only {
+  display: flex;
+}
+
+@media (max-width: 1024px) {
+  /* للتابلت: تصغير المسافات أكثر أو حجم الخط */
+  .navbar-links {
+    gap: 2.8rem;
+  }
+  .nav-link {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    height: 4.5rem;
+    padding: 0 1rem;
+  }
+  .desktop-only {
+    display: none !important;
+  }
+  .mobile-only {
+    display: flex;
+  }
+  .mobile-only-text {
+    display: inline;
+  }
+  .navbar-center {
+    display: none;
+  }
+  .navImage {
+    width: 100px;
+  }
+
+  .menu-toggle {
+    background: none;
+    border: none;
+    color: #da251c;
+    cursor: pointer;
+    display: flex;
+  }
+
+  .mobile-overlay {
+    position: absolute;
+    top: 4.5rem;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid #eee;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .mobile-nav-link {
+    display: block;
+    padding: 1.25rem;
+    text-align: center;
+    color: #374151;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 1px solid #f9f9f9;
+  }
+}

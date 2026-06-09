@@ -1,0 +1,19 @@
+.notFoundContainer {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.notFoundTitle {
+  font-size: 48px;
+}
+
+.notFoundDesc {
+  font-size: 18px;
+}
+
+.notFoundLink {
+  margin-top: 2rem;
+  font-size: 28px;
+}

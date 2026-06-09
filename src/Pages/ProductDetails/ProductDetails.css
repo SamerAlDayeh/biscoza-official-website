@@ -1,0 +1,264 @@
+.product-details-page {
+  min-height: 75vh;
+  background-color: #fcfcfc;
+  direction: rtl;
+  font-family: "Changa", sans-serif;
+}
+
+/* الهيدر الثابت */
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: white;
+  padding: 15px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* زر الرجوع الجديد */
+.back-button-new {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  padding: 10px 18px;
+  border-radius: 12px;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.back-button-new:hover {
+  background-color: #dd2727;
+  color: white;
+  border-color: #dd2727;
+  transform: translateX(5px);
+}
+
+.header-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+.header-spacer {
+  width: 140px; /* لموازنة مساحة زر الرجوع وتوسيط العنوان */
+}
+
+/* الحاوية والمحتوى */
+.product-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.product-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: start;
+}
+
+/* معرض الصور */
+.main-image-wrapper {
+  width: 100%;
+  /* حذفنا aspect-ratio: 1/1 */
+  min-height: 300px; /* حد أدنى للارتفاع لضمان عدم انهيار التصميم */
+  max-height: 600px; /* حد أقصى لكي لا تصبح الصورة طويلة جداً وتخرب الصفحة */
+  border-radius: 24px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  display: flex; /* لإبقاء الصورة في المنتصف */
+  align-items: center;
+  justify-content: center;
+}
+
+.main-image {
+  width: 100%;
+  height: auto; /* جعل الارتفاع تلقائي ليتناسب مع أبعاد الصورة الحقيقية */
+  max-height: 600px; /* الالتزام بالحد الأقصى */
+  object-fit: contain; /* يضمن عدم قص أي جزء من المنتج */
+}
+
+/* 2. تعديل الصور المصغرة */
+.thumbnail-btn {
+  width: 75px;
+  height: 75px; /* نثبت الطول والعرض لضمان التناسق */
+  border-radius: 12px;
+  border: 2px solid #eee;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+  background-color: #f9f9f9;
+  flex-shrink: 0; /* لمنع انضغاط الزر */
+}
+
+.thumbnail-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* هذا السطر هو السر: سيملأ الفراغات ويقص الزوائد */
+  object-position: center; /* لضمان بقاء منتصف المنتج ظاهراً */
+  display: block;
+}
+
+.thumbnail-btn.active {
+  border-color: #dd2727;
+  box-shadow: 0 0 8px rgba(221, 39, 39, 0.2);
+}
+.thumbnail-list {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.thumbnail-btn {
+  width: 70px;
+  height: 70px;
+  border-radius: 12px;
+  border: 2px solid #eee;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+}
+
+.thumbnail-btn.active {
+  border-color: #dd2727;
+}
+
+/* معلومات المنتج */
+.category-tag {
+  color: #d7a461;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.product-name-h1 {
+  font-size: 2.5rem;
+  margin: 10px 0;
+  color: #111827;
+}
+
+.product-price-tag {
+  font-size: 1.8rem;
+  color: #dd2727;
+  font-weight: 800;
+}
+
+.section-title-product {
+  align-items: center;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.title-indicator {
+  width: 4px;
+  height: 20px;
+  background: #dd2727;
+  border-radius: 10px;
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.spec-card {
+  padding: 15px;
+  border-radius: 15px;
+  border: 1px solid #eee;
+}
+
+.spec-card.weight {
+  background: #f0fdf4;
+  border-color: #dcfce7;
+}
+.spec-card.packaging {
+  background: #fffbeb;
+  border-color: #fef3c7;
+}
+
+.ingredient-chip {
+  background: white;
+  padding: 6px 15px;
+  border-radius: 50px;
+  border: 1px solid #eee;
+  font-size: 0.85rem;
+  margin: 3px;
+  display: inline-block;
+}
+
+/* كلاس الأنيميشن للصورة الرئيسية */
+.fade-animation {
+  animation: fadeInScale 0.5s ease-out forwards;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95); /* تبدأ أصغر قليلاً */
+    filter: blur(5px); /* تأثير ضبابي خفيف ينتهي بسرعة */
+  }
+  to {
+    opacity: 1;
+    transform: scale(1); /* تعود لحجمها الطبيعي */
+    filter: blur(0);
+  }
+}
+
+/* إضافة تأثير بسيط عند النقر على الصور المصغرة */
+.thumbnail-btn {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.thumbnail-btn:active {
+  transform: scale(0.9); /* تأثير ضغطة الزر عند النقر */
+}
+
+.thumbnail-btn.active {
+  border-color: #dd2727;
+  transform: translateY(-3px); /* ترتفع قليلاً لتبين أنها المختارة */
+  box-shadow: 0 4px 12px rgba(221, 39, 39, 0.2);
+}
+
+/* شاشات الموبايل */
+@media (max-width: 900px) {
+  .product-main-grid {
+    grid-template-columns: 1fr;
+  }
+  .header-spacer {
+    display: none;
+  }
+  .product-name-h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* ضبط اتجاه النص للقيم التي تحتوي على أرقام */
+.spec-value {
+  /* باقي التنسيقات موجودة */
+  unicode-bidi: plaintext; /* هذا يسمح للنص أن يظهر باتجاهه الطبيعي */
+}
+
+/* أو بشكل أكثر تحديداً */
+.spec-card.weight .spec-value,
+.spec-card.packaging .spec-value {
+  direction: ltr !important; /* إجبار اتجاه النص ليكون من اليسار لليمين */
+  text-align: left; /* محاذاة النص لليسار */
+  display: inline-block;
+  width: 100%;
+}
+
+[dir="rtl"] .spec-card.weight .spec-value,
+[dir="rtl"] .spec-card.packaging .spec-value {
+  text-align: left; /* حتى في الوضع RTL، نصوص الأوزان تبقى لليسار */
+}

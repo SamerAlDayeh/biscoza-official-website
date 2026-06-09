@@ -1,0 +1,215 @@
+:root {
+  --PrimaryColor: hsl(0, 93%, 27%);
+  --SecondryColor: hsl(0, 76%, 47%);
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(201, 33%, 16%);
+  --textColor: hsl(240, 4%, 36%);
+  --whiteColorDeam: hsl(0, 0%, 93%);
+  --greyText: rgb(190, 190, 190);
+  --inputColor: rgb(239, 239, 239);
+  --bodyColor: rgb(240, 240, 246);
+  --cardBG: rgb(225, 225, 235);
+  --gradientColor: linear-gradient(
+    to right,
+    hsl(187, 85%, 43%),
+    hsl(199, 100%, 33%)
+  );
+
+  --redGradientColor: linear-gradient(
+    to right top,
+    hsl(0, 93%, 27%),
+    hsl(0, 85%, 43%),
+    hsl(0, 76%, 47%),
+    hsl(0, 64%, 77%)
+  );
+}
+
+.BG {
+  background-image: url("../../../public/images/mainBG.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main {
+  padding-bottom: 10rem;
+
+  width: 100%;
+
+  .secTitle {
+    .title {
+      position: relative;
+      color: hsl(26.03deg 37.52% 39.39%);
+      margin: 1rem 0;
+      z-index: 2;
+    }
+  }
+
+  .secContent {
+    justify-content: center;
+    gap: 1.5rem;
+
+    .singleProduct {
+      padding: 3px;
+      position: relative;
+      height: 100%;
+      border-radius: 10px;
+      align-items: center;
+      /*#C1A56A*/
+      /* background: rgb(225, 225, 235);*/
+      background: rgb(225, 225, 235);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.549);
+      overflow: hidden;
+
+      &:hover {
+        cursor: pointer;
+
+        img {
+          transform: scale(1.05);
+        }
+      }
+
+      &:hover::before,
+      &:hover::after {
+        background-color: rgb(255, 255, 255);
+        box-shadow: 1px 4px 4px rgba(85, 85, 114, 0.549);
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-image: conic-gradient(
+          from var(--angle),
+          transparent,
+          hsl(0, 85%, 43%),
+          hsl(0, 76%, 47%)
+        );
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+        padding: 3px;
+        border-radius: 10px;
+        animation: 2s spin cubic-bezier(0.275, 0.72, 0.265, 1);
+        /*animation: 2s spin linear infinite;*/
+      }
+
+      &:hover::before {
+        opacity: 0.5;
+      }
+    }
+
+    .imageDiv {
+      background-color: #e8dfcb00;
+      border-radius: 10px 10px 0px 0px;
+      height: 290px;
+      width: 100%;
+      overflow: hidden;
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        transition: 2s ease;
+      }
+    }
+
+    .cardInfo {
+      border-radius: 0px 0px 10px 10px;
+      padding: 1rem;
+      background-color: #e4dbc7;
+      background-size: 80%;
+      height: 120px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      .productTitle {
+        color: hsl(26.03deg 37.52% 39.39%);
+        font-size: 1.42rem;
+      }
+
+      .desc {
+        font-size: 15px;
+        color: hsl(240, 4%, 36%);
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .title {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .secContent {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .singleProduct {
+    height: auto;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .secContent {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .singleProduct {
+    height: auto;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .secContent {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .singleProduct {
+    height: auto;
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  .secContent {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .singleProduct {
+    height: auto;
+  }
+}
+
+@media screen and (min-width: 2800px) {
+  .secContent {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .singleProduct {
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .main {
+    padding-bottom: 4rem;
+    padding-top: 2rem;
+  }
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 180deg;
+  inherits: false;
+}
+
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+
+  to {
+    --angle: 180deg;
+  }
+}
