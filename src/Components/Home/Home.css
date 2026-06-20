@@ -428,31 +428,103 @@ body {
   color: white;
 }
 
-/* Responsive */
+/* ==========================================================================
+   Responsive & Mobile Enhancements (اصلاح التوافقية الشامل وتصغير كروت المنتجات)
+   ========================================================================== */
 @media (max-width: 768px) {
+  .layout_section {
+    padding: 3.5rem 0; /* تقليل الحشوة الرأسية لتبدو متناسقة على الهاتف */
+  }
+
   .Hero_title {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
   }
+
   .Hero_desc {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
+    padding: 0 0.5rem;
   }
+
   .Hero_container {
-    height: 80vh;
+    height: 75vh; /* تجنب الارتفاع الكامل المستهلك للمساحة على الجوال */
   }
+
+  .Header_wrapper {
+    margin-bottom: 2.5rem;
+  }
+
+  .Header_subtitle {
+    font-size: 1.2rem;
+  }
+
   .Header_title {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
+
   .ui_btn {
     width: 100%;
     justify-content: center;
     margin-bottom: 1rem;
+    padding: 0.85rem 2rem;
+    font-size: 1rem;
   }
+
+  .ui_btnOutline {
+    margin-right: 0; /* منع دفع الأزرار جانبياً في بيئة الـ Block للموبايل */
+  }
+
   .Hero_arrow {
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
+  }
+
+  /* --- تصغير قسم صور البسكويت والكيك المرفقة --- */
+  .Products_grid {
+    grid-template-columns: 1fr; /* جعل المنتجات عموداً واحداً مريحاً للعين */
+    gap: 1.5rem;
+    max-width: 340px; /* تحديد حد أقصى لعرض الكارد لمنعه من التضخم */
+    margin: 0 auto; /* تمركز شبكة المنتجات في منتصف الشاشة تماماً */
+  }
+
+  .Products_card {
+    height: 320px; /* تقليص الارتفاع من 450px إلى 320px لضغط حجم الصور وحمايتها */
+    border-radius: 1.25rem;
+  }
+
+  .Products_img {
+    object-fit: cover; /* التزام الصورة بأبعاد الكارد الجديد دون الخروج عنه */
+  }
+
+  .Products_overlay {
+    padding: 1.5rem; /* تحجيم الحشوة الداخلية لتوفير مساحة للعنوان */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 75%);
+    opacity: 1; /* جعل المحتوى ظاهراً ومقروءاً فورياً على الهواتف دون الحاجة لـ Hover */
+  }
+
+  .Products_title {
+    font-size: 1.6rem;
+    transform: translateY(0);
+  }
+
+  .Products_action {
+    transform: translateY(0);
+    opacity: 1;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+}
+
+/* طبقة أمان إضافية للشاشات الصغيرة جداً (مثل iPhone SE) */
+@media (max-width: 380px) {
+  .Products_grid {
+    max-width: 100%;
+    padding: 0 0.5rem;
   }
   .Products_card {
-    height: 350px;
+    height: 280px; /* تصغير طفيف إضافي للشاشات فائقة الصغر */
+  }
+  .Products_title {
+    font-size: 1.4rem;
   }
 }
 

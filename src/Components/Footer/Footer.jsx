@@ -2,7 +2,7 @@ import React from "react";
 import { Phone, Mail, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import "./Footer.css";
 import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next"; // 1. استيراد هوك الترجمة
+import { useTranslation } from "react-i18next";
 
 // استيراد Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,11 +13,11 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
-  const { t, i18n } = useTranslation(); // 2. تفعيل دالة الترجمة
+  const { t, i18n } = useTranslation();
   const isAr = i18n.language === "ar";
 
   return (
-    <footer className="footer">
+    <footer className="footer" dir={isAr ? "rtl" : "ltr"}>
       <div className="footer-wave">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
           <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
@@ -38,7 +38,7 @@ const Footer = () => {
               </Link>
             </div>
             <p className="footer-mission">
-              {t("footer_mission_part1")} {/* 3. ربط النص بالترجمة */}
+              {t("footer_mission_part1")}
               <br />
               {t("footer_mission_part2")}
             </p>
@@ -70,7 +70,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* عمود الروابط */}
+          {/* عمود الروابط السريعة */}
           <div className="footer-col-links">
             <h3 className="footer-title">
               <span className="title-bar"></span>
@@ -84,12 +84,6 @@ const Footer = () => {
               ].map((item) => (
                 <li key={item.name}>
                   <Link to={item.path} className="footer-link">
-                    {/* اتجاه السهم يتغير حسب اللغة */}
-                    {isAr ? (
-                      <ChevronLeft size={16} className="link-arrow" />
-                    ) : (
-                      <ChevronRight size={16} className="link-arrow" />
-                    )}
                     {item.name}
                   </Link>
                 </li>
@@ -106,14 +100,14 @@ const Footer = () => {
             <div className="contact-list">
               <div className="contact-item">
                 <MapPin className="contact-icon" size={24} />
-                <div>
+                <div className="contact-text-wrapper">
                   <p className="contact-label">{t("footer_headquarters")}</p>
                   <p className="contact-value">{t("footer_address")}</p>
                 </div>
               </div>
               <div className="contact-item">
                 <Phone className="contact-icon" size={24} />
-                <div>
+                <div className="contact-text-wrapper">
                   <p className="contact-label">
                     {t("footer_customer_service")}
                   </p>
@@ -124,7 +118,7 @@ const Footer = () => {
               </div>
               <div className="contact-item">
                 <Mail className="contact-icon" size={24} />
-                <div>
+                <div className="contact-text-wrapper">
                   <p className="contact-label">{t("footer_email_us")}</p>
                   <p className="contact-value font-sans">info@biscoza.co</p>
                 </div>

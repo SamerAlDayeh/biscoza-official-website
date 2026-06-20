@@ -5,11 +5,16 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  font-family: "Changa","Poppins", sans-serif;
+  font-family: "Changa", "Poppins", sans-serif;
+  line-height: 1.6; /* حماية تداخل الأسطر والنصوص العربية */
 }
 
-html {
+/* حزام أمان لمنع أي مساحة بيضاء يميناً أو يساراً في الموقع بالكامل */
+html,
+body {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 :root {
@@ -38,11 +43,16 @@ li {
   list-style: none;
 }
 
+/* جعل التباعد متجاوباً تلقائياً بين الموبايل والشاشات الكبيرة */
 .section {
-  padding: 4rem 0 2rem;
+  padding: clamp(2rem, 6vh, 4rem) 0 clamp(1rem, 3vh, 2rem);
 }
 
 .container {
+  width: 100%;
+  max-width: 1240px; /* تمنع تشتت المحتوى على الشاشات العملاقة */
+  margin-left: auto;
+  margin-right: auto;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
@@ -55,6 +65,7 @@ li {
 .flex {
   display: flex;
   align-items: center;
+  flex-wrap: wrap; /* تمنع خروج العناصر عن الشاشة على الموبايل */
 }
 
 .grid {
@@ -69,6 +80,7 @@ li {
   border: none;
   outline: none;
   cursor: pointer;
+  transition: background 0.3s ease; /* نعومة عند التمرير */
 }
 
 .btn a {
@@ -80,24 +92,22 @@ li {
   background: var(--SecondryColor);
 }
 
+/* التعديل الجوهري لحماية الأيقونات والصور */
 img,
 video {
-  width: 100%;
+  max-width: 100%; /* تحمي الصورة من الخروج عن حاويتها دون تضخيم الصغير منها */
   height: auto;
+  display: block;
 }
 
 input {
   font-size: 100%;
 }
 
-body {
-  
-}
-
-
-.background{
+.background {
   background: var(--bodyColor);
- /* background-color: #cecaca;*/
-  /*background-image: url("../../../public/images/0123.png");   #cfd0d0    #fbeee4     */
-  background-repeat: round;
+  min-height: 100vh; /* يضمن تغطية الشاشة بالكامل حتى لو كان محتوى الصفحة قصيراً */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
